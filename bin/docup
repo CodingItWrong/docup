@@ -27,3 +27,7 @@ cp "${DIR}/template/.prettierrc.js" .prettierrc.js
 npm set-script lint "eslint ."
 git add .
 git commit -m "Add ESLint and Prettier"
+
+yarn lint --fix
+git add .
+git commit -m "Lint files"
