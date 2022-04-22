@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
+
+npx create-docusaurus@latest -p yarn $1 classic
+cd $1
+
+git init .
+git add .
+git commit -m "Create Docusaurus site"
+
+echo "package-lock=false" >> .npmrc
+git add .
+git commit -m "Prevent package lock"
+
+yarn add -D @babel/core \
+            @babel/eslint-parser \
+            eslint \
+            eslint-config-prettier \
+            eslint-plugin-import \
+            eslint-plugin-prettier \
+            eslint-plugin-react \
+            prettier
+
+cp "${DIR}/template/.eslintrc.js" .eslintrc.js
+cp "${DIR}/template/.prettierrc.js" .prettierrc.js
+npm set-script lint "eslint ."
+git add .
+git commit -m "Add ESLint and Prettier"
