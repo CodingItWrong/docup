@@ -1,7 +1,8 @@
 # Docup
 
-Generates a Docusaurus project with:
+Generates a Docusaurus 2 project with:
 
+- The Classic theme
 - [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/)
 
 ## Requirements
